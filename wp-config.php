@@ -32,6 +32,10 @@ if ( ! defined( 'WP_CONTENT_DIR' ) ) {
 	define( 'WP_CONTENT_DIR', __DIR__ . '/content' );
 }
 
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+  $_SERVER['HTTP_HOST'] = getenv('VIRTUAL_HOST');
+}
+
 // Pass "https" protocol from reverse proxies
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
   $_SERVER['HTTPS'] = 'on';
