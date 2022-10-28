@@ -6,7 +6,8 @@
 
 # Platform development
 !.gitkeep
-/content
 .config/
-/composer.*
 /*.php
+/.idea
+/composer.*
+/content
