@@ -12,7 +12,9 @@
 	"require": {
 		"php": ">=8.0",
 		"composer-plugin-api": "^2.0",
-		"johnpbloch/wordpress": ">=6.0"
+		"johnpbloch/wordpress": ">=6.0",
+		"wpackagist-theme/twentytwenty":">=2.0"
+
 	},
 	"require-dev": {
 		"humanmade/coding-standards": "^1.2",

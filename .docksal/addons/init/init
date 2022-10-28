@@ -15,6 +15,7 @@ fin exec mkdir -p .config
 fin exec cp .docksal/addons/init/*.{php,json} .
 fin exec composer -n install
 fin wp core multisite-install --title="My WPP Site" --admin_email="admin@$VIRTUAL_HOST" --skip-email --url="$VIRTUAL_HOST"
+fin wp theme activate twentytwenty --url="$VIRTUAL_HOST"
 
 # replace repo gitignore with default project .gitignore
 fin exec cp -f .docksal/addons/init/gitignore .gitignore
