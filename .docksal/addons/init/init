@@ -9,17 +9,23 @@ green_bg='\033[42m'
 yellow='\033[1;33m'
 NC='\033[0m'
 
+URL="https://$VIRTUAL_HOST"
+
+rm -rf {vendor,wordpress}
 fin reset -f
 fin exec mkdir -p content/{themes,mu-plugins,plugins}
 fin exec mkdir -p .config
 fin exec cp .docksal/addons/init/*.{php,json} .
 fin exec composer -n install
-fin wp core multisite-install --title="My WPP Site" --admin_email="admin@$VIRTUAL_HOST" --skip-email --url="$VIRTUAL_HOST"
-fin wp theme activate twentytwenty --url="$VIRTUAL_HOST"
+fin exec sudo wp cli update --yes
+fin wp core multisite-install --title="My WPP Site" --admin_email="admin@$VIRTUAL_HOST" --skip-email --url="$URL"
+fin wp theme activate twentytwenty --url="$URL"
+fin wp rewrite structure '/%year%/%postname%/'
+fin wp cache flush
 
 # replace repo gitignore with default project .gitignore
 fin exec cp -f .docksal/addons/init/gitignore .gitignore
 
 echo "------------------------------------"
 echo -e "${green}Installation complete.${NC}"
-echo -e "  URL: ${yellow}https://$VIRTUAL_HOST${NC}"
+echo -e "  URL: ${yellow}$URL${NC}"

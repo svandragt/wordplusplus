@@ -54,8 +54,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
   $_SERVER['HTTPS'] = 'on';
 }
 
-define( 'WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']  );
-define( 'WP_SITEURL', $protocol . '://' . $_SERVER['HTTP_HOST']  );
+// define( 'WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']  );
+// define( 'WP_SITEURL', $protocol . '://' . $_SERVER['HTTP_HOST']  );
 
 
 /*
