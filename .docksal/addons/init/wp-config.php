@@ -32,6 +32,11 @@ if ( ! defined( 'WP_CONTENT_DIR' ) ) {
 	define( 'WP_CONTENT_DIR', __DIR__ . '/content' );
 }
 
+// Pass "https" protocol from reverse proxies
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+  $_SERVER['HTTPS'] = 'on';
+}
+
 $protocol = ! empty( $_SERVER['HTTPS'] ) ? 'https' : 'http';
 if ( ! defined( 'WP_CONTENT_URL' ) ) {
 	define( 'WP_CONTENT_URL', $protocol . '://' . $_SERVER['HTTP_HOST'] . '/content' );
@@ -47,11 +52,6 @@ if ( ! defined( 'WP_INITIAL_INSTALL' ) || ! WP_INITIAL_INSTALL ) {
 
 if ( ! isset( $table_prefix ) ) {
 	$table_prefix = getenv( 'TABLE_PREFIX' ) ?: 'wp_';
-}
-
-// Pass "https" protocol from reverse proxies
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-  $_SERVER['HTTPS'] = 'on';
 }
 
 // define( 'WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']  );
