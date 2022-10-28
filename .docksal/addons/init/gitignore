@@ -1,0 +1,29 @@
+.DS_Store
+.env
+.history
+*.log
+*.sql*
+
+# Editor
+.idea/
+
+# WordPress
+/content/cache/
+/content/upgrade/
+/content/uploads/
+/uploads/
+/wordpress/
+/index.php
+/uploads.*
+/wp-config.php
+
+# Local files
+.env*.local
+/.config/local.php
+# Generated or third-party files
+/content/mu-plugins/vendor/
+/content/plugins/vendor/
+/node_modules/
+/vendor/
+
+!.gitkeep

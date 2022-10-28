@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Console colors
+red='\033[0;91m'
+red_bg='\033[101m'
+yellow_bg='\033[43;90m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+fin reset -f
+fin exec mkdir -p content/{themes,mu-plugins,plugins}
+fin exec mkdir -p .config
+fin exec cp .docksal/addons/init/*.{php,json} .
+fin exec composer -n install
+fin wp core multisite-install --title="My WPP Site" --admin_email="admin@$VIRTUAL_HOST" --skip-email --url="$VIRTUAL_HOST"
+
+# replace repo gitignore with default project .gitignore
+fin exec cp -f .docksal/addons/init/gitignore .gitignore
+
+echo "------------------------------------"
+echo -e "${green}Installation complete.${NC}"
+echo -e "  URL: ${yellow}https://$VIRTUAL_HOST${NC}"

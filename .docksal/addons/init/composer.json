@@ -1,0 +1,57 @@
+{
+	"name": "svandragt/wordplusplus",
+	"description": "A personal blogging platform",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Sander van Dragt",
+			"email": "sander@vandragt.com"
+		}
+	],
+	"type": "project",
+	"require": {
+		"php": ">=8.0",
+		"composer-plugin-api": "^2.0",
+		"johnpbloch/wordpress": ">=6.0"
+	},
+	"require-dev": {
+		"humanmade/coding-standards": "^1.2",
+		"roave/security-advisories": "dev-latest"
+	},
+	"prefer-stable": true,
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org",
+			"only": [
+				"wpackagist-plugin/*",
+				"wpackagist-theme/*"
+			]
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"johnpbloch/wordpress-core-installer": true
+		},
+		"platform": {
+			"php": "8.0",
+			"ext-mbstring": "8.0"
+		},
+		"sort-packages": true
+	},
+	"extra": {
+		"installer-paths": {
+			"content/mu-plugins/vendor/{$name}/": [
+				"type:wordpress-muplugin"
+			],
+			"content/plugins/{$name}/": [
+				"type:wordpress-plugin"
+			],
+			"content/themes/{$name}/": [
+				"type:wordpress-theme"
+			]
+		}
+	}
+}
