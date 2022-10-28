@@ -54,9 +54,8 @@ if ( ! isset( $table_prefix ) ) {
 	$table_prefix = getenv( 'TABLE_PREFIX' ) ?: 'wp_';
 }
 
-// define( 'WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']  );
-// define( 'WP_SITEURL', $protocol . '://' . $_SERVER['HTTP_HOST']  );
-
+define( 'WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']  );
+define( 'WP_SITEURL', $protocol . '://' . $_SERVER['HTTP_HOST'] . "/wordpress" );
 
 /*
  * DB constants are expected to be provided by other modules, as they are
