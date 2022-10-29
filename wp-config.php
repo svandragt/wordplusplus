@@ -51,6 +51,11 @@ if ( ! defined( 'WP_INITIAL_INSTALL' ) || ! WP_INITIAL_INSTALL ) {
 	// early loading code tried to change that of course.
 	if ( ! defined( 'MULTISITE' ) ) {
 		define( 'MULTISITE', true );
+		define('SUBDOMAIN_INSTALL', false);
+		define('DOMAIN_CURRENT_SITE', $_SERVER['HTTP_HOST']);
+		define('PATH_CURRENT_SITE', '/');
+		define('SITE_ID_CURRENT_SITE', 1);
+		define('BLOG_ID_CURRENT_SITE', 1);
 	}
 }
 
