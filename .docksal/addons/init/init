@@ -15,11 +15,11 @@ rm -rf {vendor,wordpress}
 fin reset -f
 fin exec mkdir -p content/{themes,mu-plugins,plugins}
 fin exec mkdir -p .config
-fin exec cp .docksal/addons/init/*.{json} .
+fin exec cp .docksal/addons/init/*.json .
 fin exec composer -n install
 fin exec sudo wp cli update --yes
 fin wp core multisite-install --title="My WPP Site" --admin_email="admin@$VIRTUAL_HOST" --skip-email --url="$URL"
-fin wp theme activate twentytwenty --url="$URL"
+fin wp option set home "$URL"
 fin wp rewrite structure '/%year%/%postname%/'
 fin wp cache flush
 
